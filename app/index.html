@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Cover Maker — GTA 6-style cover art, offline</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VC</span>
+    <div>
+      <h1>Vice City Cover Maker</h1>
+      <p>Turn your photos into GTA 6-style cover art. Offline, on your machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <label class="btn ghost">Load a photo
+      <input id="file-hero" type="file" accept="image/*" hidden>
+    </label>
+    <button id="btn-sample" class="btn ghost" type="button">Use sample photos</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="stage-wrap">
+    <div class="stage-toolbar">
+      <span id="stage-label">Poster · 1080 × 1080</span>
+      <span class="hint">Drag a photo to reposition it · scroll to zoom</span>
+    </div>
+    <div class="stage">
+      <canvas id="cover" width="1080" height="1080"></canvas>
+    </div>
+    <div class="size-row" role="group" aria-label="Export size">
+      <button class="size-btn active" data-w="1080" data-h="1080" type="button">Square · 1080×1080</button>
+      <button class="size-btn" data-w="1080" data-h="1350" type="button">Portrait · 1080×1350</button>
+      <button class="size-btn" data-w="1920" data-h="1080" type="button">Wide · 1920×1080</button>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <section class="card">
+      <h2>Layout</h2>
+      <div class="layout-btns" role="group" aria-label="Layout">
+        <button class="layout-btn active" data-layout="poster" type="button">Poster<br><span>hero + 2 panels</span></button>
+        <button class="layout-btn" data-layout="solo" type="button">Solo<br><span>one big photo</span></button>
+        <button class="layout-btn" data-layout="strip" type="button">Strip<br><span>three panels</span></button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Photos</h2>
+      <div class="photo-row">
+        <label>Hero
+          <select id="sel-hero">
+            <option value="boulevard">Boulevard at night</option>
+            <option value="pier">Pier at sunset</option>
+            <option value="upload">Your upload…</option>
+          </select>
+        </label>
+        <label>Panel 2
+          <select id="sel-side1">
+            <option value="pier">Pier at sunset</option>
+            <option value="boulevard">Boulevard at night</option>
+            <option value="upload">Your upload…</option>
+          </select>
+        </label>
+        <label>Panel 3
+          <select id="sel-side2">
+            <option value="boulevard">Boulevard at night</option>
+            <option value="pier">Pier at sunset</option>
+            <option value="upload">Your upload…</option>
+          </select>
+        </label>
+      </div>
+      <label class="slider-label">Hero zoom
+        <input id="zoom-hero" type="range" min="1" max="2.5" step="0.01" value="1.15">
+      </label>
+      <label class="slider-label">Sunset grade
+        <input id="grade" type="range" min="0" max="1" step="0.01" value="0.55">
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Caption</h2>
+      <label class="field">Title
+        <input id="cap-title" type="text" value="VICE CITY" maxlength="24">
+      </label>
+      <label class="field">Subtitle
+        <input id="cap-sub" type="text" value="Sunset Heist" maxlength="40">
+      </label>
+      <label class="slider-label">Title size
+        <input id="cap-size" type="range" min="0.7" max="1.4" step="0.01" value="1">
+      </label>
+    </section>
+
+    <button id="btn-export" class="btn primary big" type="button">Export PNG</button>
+    <p class="fineprint">Photos never leave your machine. Fonts: Anton (SIL OFL). Sample photos: CC BY / CC BY-SA, see README.</p>
+  </aside>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
